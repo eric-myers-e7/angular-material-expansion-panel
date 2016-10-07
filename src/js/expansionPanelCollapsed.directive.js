@@ -29,11 +29,13 @@ function expansionPanelCollapsedDirective($animateCss, $timeout) {
       show: show,
       hide: hide
     });
-
-
-    element.on('click', function () {
-      expansionPanelCtrl.expand();
-    });
+    var noClick = attrs.mdNoClick === undefined;
+    
+    if (noClick) {
+      element.on('click', function () {
+        expansionPanelCtrl.expand();
+      });
+    }
 
 
     function hide(options) {
